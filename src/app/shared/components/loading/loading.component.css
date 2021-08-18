@@ -1,4 +1,0 @@
-::ng-deep .custom-dialog > mat-dialog-container {
-  background-color: var(--background);
-  box-shadow: none;
-}

@@ -1,8 +1,0 @@
-<div class="padding">
-  <mat-card>
-    <mat-card-header *ngIf="!!field.label">
-      <mat-card-title>{{field.label | translate}}</mat-card-title>
-    </mat-card-header>
-    <app-field *ngFor="let f of field.value" fxFill [field]="f" [form]="form"></app-field>
-  </mat-card>
-</div>
