@@ -1,0 +1,19 @@
+<div [ngClass]="{sticky: isSticky, padding: !isSticky}">
+  <button *ngIf="cancelBtn" mat-raised-button (click)="onCancel()">
+    <mat-icon>arrow_back</mat-icon>
+    {{ cancelText | translate}}
+  </button>
+
+  <div fxFlex="1 1 auto">
+  </div>
+
+  <button *ngIf="submitBtn" mat-raised-button color="primary" (click)="onSubmit(form)" [disabled]="!valid">
+    <mat-icon>save</mat-icon>
+    {{ submitText | translate}}
+  </button>
+</div>
+
+<form fxLayout.xs="column" fxLayout.gt-xs="row wrap">
+  <app-field *ngFor="let field of fields" [fxFlex.xs]="field.width.xs" [fxFlex.gt-xs]="field.width.sm" [field]="field"
+    [form]="form"></app-field>
+</form>

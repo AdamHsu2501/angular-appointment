@@ -1,0 +1,25 @@
+<!-- <mat-form-field fxFill>
+  <mat-label>{{field.label | translate}}</mat-label>
+
+  <input matInput [ngxMatDatetimePicker]="picker" [formControl]="dateControl">
+
+  <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+
+  <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds" [stepHour]="stepHour"
+    [stepMinute]="stepMinute" [stepSecond]="stepSecond" [touchUi]="touchUi" color='primary'
+    [enableMeridian]="enableMeridian">
+  </ngx-mat-datetime-picker>
+
+
+  <mat-hint align="end"> {{ field.hint | translate}} </mat-hint>
+  <mat-error *ngIf="!isValid">{{ 'fieldRequired' | translate: {field: field.label | translate } }}</mat-error>
+</mat-form-field> -->
+
+<input type="hidden" name="mydate" angular-mydatepicker [(ngModel)]="model" [options]="myDpOptions"
+  (dateChanged)="onDateChanged($event)" />
+
+<mat-dialog-actions fxLayoutAlign="space-between">
+  <button mat-button mat-dialog-close>{{'cancel' | translate}}</button>
+  <button [disabled]="!model" mat-flat-button [mat-dialog-close]="model" color="primary">{{'submit' |
+    translate}}</button>
+</mat-dialog-actions>

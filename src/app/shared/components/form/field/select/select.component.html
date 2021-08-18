@@ -1,0 +1,15 @@
+<mat-form-field fxFill [formGroup]="form">
+  <mat-label>{{field.label | translate}}</mat-label>
+
+  <mat-select [formControlName]="field.key" [id]="field.key" [required]="field.required">
+    <mat-option *ngFor="let option of options | async" [value]="option">
+      {{ field.displayFn(option)}}
+    </mat-option>
+  </mat-select>
+
+  <span matPrefix>{{field.prefix}}&nbsp;</span>
+  <span matSuffix>{{field.suffix}}</span>
+
+  <mat-hint align="end"> {{ field.hint | translate}} </mat-hint>
+  <mat-error *ngIf="!isValid">{{ 'fieldRequired' | translate: {field: field.label | translate } }}</mat-error>
+</mat-form-field>

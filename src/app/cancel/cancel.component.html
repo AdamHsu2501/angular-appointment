@@ -1,0 +1,22 @@
+<div [class.root]="!isHandset">
+  <mat-card>
+    <div fxLayout='column' fxLayout.gt-sm="row" fxLayoutGap="1em">
+
+      <div fxFlex="1 1 auto" fxFlex.gt-sm="1 1 30" [class]="isHandset? 'borderBottom' : 'borderRight'"
+        fxLayoutAlign="center" fxLayoutAlign.gt-sm="start">
+        <app-info fxFill [event]="event" [oldData]="oldData"> </app-info>
+      </div>
+
+      <div fxFlex="1 1 auto" fxLayout="column">
+        <h2>{{'cancel' | translate}}</h2>
+
+        <app-form [fields]="fields" [form]="form" [cancelBtn]="false" [submitBtn]="false"></app-form>
+
+        <div>
+          <button mat-raised-button color="primary" (click)="update(form)">
+            {{"submit" | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

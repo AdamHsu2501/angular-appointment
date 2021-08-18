@@ -1,0 +1,24 @@
+<div class="root">
+  <div fxLayoutAlign="center">
+    <h2>{{text | translate}}</h2>
+  </div>
+
+  <mat-list class="container">
+    <mat-list-item>
+      <mat-icon mat-list-icon>person</mat-icon>
+      <div>{{data.name}}</div>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon mat-list-icon>event_available</mat-icon>
+      <div>{{getDate(data)}}</div>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon mat-list-icon>public</mat-icon>
+      <div>{{data.timeZone}}</div>
+    </mat-list-item>
+  </mat-list>
+
+  <div fxLayoutAlign="center" class="margin">
+    {{'appointmentDone' | translate}}
+  </div>
+</div>

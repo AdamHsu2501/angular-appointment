@@ -1,0 +1,61 @@
+<mat-card [ngClass]="{'cancel':data.status === 'canceled'}">
+  <mat-card-header>
+    <mat-card-title>{{getDateForm(data)}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxLayout="column" fxLayout.gt-xs="row">
+    <mat-list fxFill fxFlex.gt-xs="50">
+      <mat-list-item>
+        <mat-icon mat-list-icon>person</mat-icon>
+        <div mat-line>{{data.name}}</div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>email</mat-icon>
+        <div mat-line>{{data.email}}</div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>phone</mat-icon>
+        <div mat-line>{{data.tel}}</div>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list fxFill fxFlex.gt-xs="50">
+      <mat-list-item>
+        <div mat-line>
+          <mat-label>{{'remark'}}</mat-label>
+        </div>
+        <div mat-line>{{data.remark}}</div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <div mat-line>
+          <mat-label>{{'reason' }}</mat-label>
+        </div>
+        <div mat-line>{{data.reason}}</div>
+
+      </mat-list-item>
+
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions *ngIf="data.status === 'activated'">
+    <a mat-stroked-button [routerLink]="['../','reschedule', data.id]">
+      <mat-icon>update</mat-icon>
+      {{'reschedule' }}
+    </a>
+
+    <div fxFlex="1 1 auto"></div>
+
+    <a mat-stroked-button [routerLink]="['../','cancel', data.id]">
+      <mat-icon>event_busy</mat-icon>
+      {{'cancel' }}
+    </a>
+  </mat-card-actions>
+
+  <mat-card-actions fxLayoutAlign="end" *ngIf="data.status === 'canceled'">
+    <button mat-icon-button color="warn" [matTooltip]="'delete' " (click)="onDelete(data)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

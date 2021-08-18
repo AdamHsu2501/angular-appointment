@@ -1,0 +1,24 @@
+.root {
+  background-color: #fbfcfd;
+  padding: 5% 10%;
+  height: 100%;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  display: none !important;
+}
+.borderBottom {
+  border-bottom: 1px solid lightgray;
+}
+
+.borderRight {
+  border-right: 1px solid lightgray;
+}
+
+.scroll {
+  overflow: auto;
+}
+
+.h80 {
+  height: 80vh !important;
+}

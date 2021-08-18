@@ -1,0 +1,15 @@
+.root {
+  background-color: #fbfcfd;
+  padding: 5% 10%;
+  height: 100%;
+}
+
+.container {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 2% 5%;
+}
+
+.margin {
+  margin: 5%;
+}

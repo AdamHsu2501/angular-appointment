@@ -1,0 +1,22 @@
+<button mat-button color="primary" [matMenuTriggerFor]="menu" fxLayoutAlign="space-between  center">
+  <mat-icon class="margin">public</mat-icon>
+  <span>{{selected}}</span>
+  <mat-icon>arrow_drop_down</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <!-- <button mat-menu-item *ngFor="let item of list" (click)="onClick(item)">{{item}}</button> -->
+
+
+  <form class="padding" (click)="$event.stopPropagation();">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>{{"timeZone" | translate}}</mat-label>
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="onClick(option)">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</mat-menu>

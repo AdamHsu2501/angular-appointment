@@ -1,0 +1,21 @@
+.root {
+  margin: 1em 0;
+}
+
+.item {
+  padding: 10px;
+  border: 1px dashed gray;
+  border-radius: 12px;
+  cursor: move;
+  word-break: break-all;
+}
+
+.cancelIcon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+img {
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+img {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+/* ::ng-deep .mat-select-trigger {
+  min-width: 80vw;
+}
+
+::ng-deep .mat-select-panel {
+  max-height: 80vh !important;
+} */
+
+.content {
+  height: auto;
+  line-height: auto;
+  overflow: initial;
+}

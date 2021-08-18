@@ -1,0 +1,33 @@
+<mat-card [ngClass]="{'display': data.display, 'hidden': !data.display }">
+
+  <mat-card-content>
+    <mat-card-title>{{data.displayName }}</mat-card-title>
+    <mat-card-subtitle>{{data.duration}} {{'minutes' | translate}}</mat-card-subtitle>
+
+  </mat-card-content>
+
+  <mat-card-content>
+    <div class="text-pre-line">{{data.text }}</div>
+  </mat-card-content>
+
+  <mat-card-actions fxLayoutAlign="center">
+    <a mat-button color="primary" [routerLink]="['../', 'schedule', data.id]">{{'makeAnAppointment' | translate}}</a>
+  </mat-card-actions>
+
+  <mat-card-actions>
+    <button mat-icon-button [matTooltip]="'clone' | translate" (click)="onClone(data)">
+      <mat-icon>file_copy</mat-icon>
+    </button>
+
+    <button mat-icon-button [matTooltip]="'edit' | translate" [routerLink]="data.id">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <div fxFlex="1 1 auto"></div>
+
+    <button mat-icon-button color="warn" [matTooltip]="'delete' | translate" (click)="onDelete(data)">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+  </mat-card-actions>
+</mat-card>

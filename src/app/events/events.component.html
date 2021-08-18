@@ -1,0 +1,19 @@
+<h1>{{path | uppercase | translate}}</h1>
+
+<div fxLayoutAlign="end">
+  <a mat-button color="primary" routerLink="add">
+    <mat-icon>add</mat-icon> {{'add' | translate}}
+  </a>
+</div>
+
+<app-collection [docs$]="data$">
+  <ng-template let-items>
+    <div fxLayout.xs="column" fxLayout.gt-xs="row wrap">
+      <div *ngFor="let item of items" fxFill fxFlex.gt-xs="50" fxFlex.gt-sm="33.33" fxFlex.gt-md="25" class="padding">
+
+        <app-event-card [data]="item"></app-event-card>
+
+      </div>
+    </div>
+  </ng-template>
+</app-collection>

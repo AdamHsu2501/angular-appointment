@@ -1,0 +1,31 @@
+<mat-form-field fxFill [formGroup]="form">
+  <mat-label>{{field.label | translate}}</mat-label>
+
+  <input matInput [formControl]="inputControl" [matAutocomplete]="auto" (blur)="blur($event)"
+    [required]="field.required">
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="field.displayFn" (optionSelected)='add($event)'>
+    <ng-container *ngIf="field.type === 'item'; else main;">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" class="content">
+        <div fxLayoutAlign="start center">
+          <img [src]="option.files[0].url" [alt]="option.code">
+          {{field.displayFn(option)}}
+        </div>
+      </mat-option>
+    </ng-container>
+
+    <ng-template #main>
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{field.displayFn(option)}}
+      </mat-option>
+    </ng-template>
+
+  </mat-autocomplete>
+
+  <span matPrefix>{{field.prefix}}&nbsp;</span>
+  <button mat-icon-button matSuffix [disabled]="control.disabled" (click)="clear($event)">
+    <mat-icon>clear</mat-icon>
+  </button>
+
+  <mat-hint align="end"> {{ field.hint | translate}} </mat-hint>
+  <mat-error *ngIf="!isValid">{{ 'fieldRequired' | translate: {field: field.label | translate } }}</mat-error>
+</mat-form-field>

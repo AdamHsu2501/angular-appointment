@@ -1,0 +1,10 @@
+.content {
+  border: 2px dashed gray;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.warn {
+  color: red;
+}

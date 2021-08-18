@@ -1,0 +1,5 @@
+<!-- <app-fields [fields]="field.value" [form]="control" [xs]="field.direction.xs" [sm]="field.direction.sm"></app-fields> -->
+<div>
+  <h2>{{field.label | translate}}</h2>
+  <app-field *ngFor="let f of field.value" fxFill [field]="f" [form]="control"></app-field>
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="!field.hidden" [ngSwitch]="field.controlType">
+  <app-group *ngSwitchCase="'group'" [field]="field" [form]="group"></app-group>
+  <app-dynamic *ngSwitchCase="'dynamic'" [field]="field" [form]="group"></app-dynamic>
+  <app-array *ngSwitchCase="'array'" [field]="field" [form]="group"></app-array>
+  <app-dynamic-array *ngSwitchCase="'dynamicArray'" [field]="field" [form]="group"></app-dynamic-array>
+  <app-card *ngSwitchCase="'card'" [field]="field" [form]="group"></app-card>
+  <app-textbox *ngSwitchCase="'textbox'" [field]="field" [form]="group"></app-textbox>
+  <app-time *ngSwitchCase="'time'" [field]="field" [form]="group"></app-time>
+  <app-textarea *ngSwitchCase="'textarea'" [field]="field" [form]="group"></app-textarea>
+  <app-editor *ngSwitchCase="'editor'" [field]="field" [form]="group"></app-editor>
+  <app-number *ngSwitchCase="'number'" [field]="field" [form]="group"></app-number>
+  <app-select *ngSwitchCase="'select'" [field]="field" [form]="group"></app-select>
+  <app-autocomplete *ngSwitchCase="'autocomplete'" [field]="field" [form]="group"></app-autocomplete>
+  <app-multi-autocomplete *ngSwitchCase="'chips'" [field]="field" [form]="group">
+  </app-multi-autocomplete>
+  <app-date *ngSwitchCase="'date'" [field]="field" [form]="group"></app-date>
+  <app-upload *ngSwitchCase="'file'" [field]="field" [form]="group"></app-upload>
+</div>

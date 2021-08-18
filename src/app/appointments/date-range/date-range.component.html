@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-content fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="center" fxLayoutGap="10px">
+    <button mat-raised-button color="primary" [mat-dialog-close]="getToday()">{{'today' }}</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="getWeek()">{{'thisWeek' }}</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="getMonth()">{{'thisMonth' }}</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="getYear()">{{'thisYear' }}</button>
+  </mat-card-content>
+  <mat-card-content fxLayoutAlign="center">
+    <input fxFill type="hidden" name="mydate" angular-mydatepicker [options]="myDpOptions" [(ngModel)]="model"
+      #dp="angular-mydatepicker" />
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [disabled]="!model" [mat-dialog-close]="getSelected(model)">
+      {{'done' }}
+    </button>
+  </mat-card-actions>
+</mat-card>
