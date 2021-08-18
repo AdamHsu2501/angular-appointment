@@ -10,14 +10,14 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 # Events page
 
-⋅⋅*list events
+⋅⋅* list events
 
-⋅⋅*create, edit, delete event
+⋅⋅* create, edit, delete event
 
-⋅⋅*schedule event
+⋅⋅* schedule event
 
 # Appointments page
 
-⋅⋅*list appointments
+⋅⋅* list appointments
 
-⋅⋅*reschedule, cancel, delete appointment
+⋅⋅* reschedule, cancel, delete appointment
