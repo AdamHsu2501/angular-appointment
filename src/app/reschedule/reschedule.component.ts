@@ -71,8 +71,7 @@ export class RescheduleComponent implements OnInit {
     this.getAppointment()
       .pipe(first())
       .subscribe((oldData) => {
-        const d = Date.now();
-        if (!oldData || oldData.begin <= d) {
+        if (!oldData) {
           this.router.navigateByUrl('404');
         }
         this.oldData = oldData!;

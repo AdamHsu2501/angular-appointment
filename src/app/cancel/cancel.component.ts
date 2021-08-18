@@ -42,8 +42,7 @@ export class CancelComponent implements OnInit {
     this.getAppointment()
       .pipe(first())
       .subscribe((oldData) => {
-        const d = Date.now();
-        if (!oldData || oldData.status === 'canceled' || oldData.begin <= d) {
+        if (!oldData || oldData.status === 'canceled') {
           this.router.navigateByUrl('404');
         } else {
           this.eventsService.getDoc(oldData.event).subscribe((event) => {

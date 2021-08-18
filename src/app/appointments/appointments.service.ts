@@ -5,7 +5,7 @@ import { IAppointment, IEvent } from '../shared/IConfig';
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { IAngularMyDpOptions } from 'angular-mydatepicker';
-import moment from 'moment';
+import moment, { months } from 'moment';
 
 export interface ISelectedDate {
   begin: moment.Moment;
@@ -154,17 +154,33 @@ export class AppointmentsService {
   }
 
   private getSettingRange(event: IEvent, date: moment.Moment): ISelectedDate[] {
-    const arr =
+    const ranges =
       event.dates[date.format('MM/DD')] || event.weekly[date.format('d')];
-
-    return arr.map((item) => {
+    const now = moment();
+    const arr: ISelectedDate[] = [];
+    ranges.forEach((item) => {
       const [sHour, sMin] = item.begin.split(':').map((i) => Number(i));
       const [eHour, eMin] = item.end.split(':').map((i) => Number(i));
 
-      const begin = date.clone().set('hour', sHour).set('minute', sMin);
       const end = date.clone().set('hour', eHour).set('minute', eMin);
-      return { begin, end };
+
+      if (end > now) {
+        let begin = date.clone().set('hour', sHour).set('minute', sMin);
+        if (begin >= now) {
+          arr.push({ begin, end });
+        } else {
+          let newMin = now.minutes();
+
+          while (newMin % 5) {
+            newMin += 1;
+          }
+          begin = now.clone().set('minute', newMin);
+          arr.push({ begin, end });
+        }
+      }
     });
+
+    return arr;
   }
 
   getTimes(
@@ -174,6 +190,7 @@ export class AppointmentsService {
     schedules: IAppointment[]
   ): ISelectedDate[] {
     const serviceTimeZone = event.timeZone;
+    const now = moment();
     const day1 = moment(day).tz(serviceTimeZone);
     const end = day1.clone().add(1, 'day');
     const day2 = end.clone().subtract(1, 'second');
@@ -193,12 +210,15 @@ export class AppointmentsService {
       schedules
     );
 
-    return this.getTimeOptions(
+    const options = this.getTimeOptions(
       availableList,
       Math.min(event.duration, event.interval),
       event.duration,
       userTimeZone
     );
+    console.log('options', options);
+
+    return options;
   }
 
   createAppointment(
